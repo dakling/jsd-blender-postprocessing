@@ -60,7 +60,6 @@ def get_camera_loc_and_rot():
     lens = interpolate(lens_0, lens_1)
     return loc, rot, lens
 camera_location, camera_rotation, lens = get_camera_loc_and_rot()
-print(camera_location)
 camera = bpy.data.objects.get("Camera")
 camera.location = camera_location
 camera.rotation_euler = camera_rotation

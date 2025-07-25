@@ -1,5 +1,6 @@
 import subprocess
 import glob
+import os
 
 # === CONFIGURATION ===
 
@@ -28,10 +29,8 @@ for newpath in newpaths:
 
 # === BUILD ARGUMENT LIST ===
 N = len(stl_paths)
-n_substeps = 3
-# n_substeps = 1
+n_substeps = 3 # for smoother camera movement
 for i in range(1, N):
-# for i in [N-1]:
     print("Doing image", i + 1, "out of", N)
     for j in range(n_substeps):
         print("substep", j + 1, "out of", n_substeps)
@@ -42,7 +41,7 @@ for i in range(1, N):
             "--background",             # Run in background (no UI)
             "--python", render_script, # Python script to run inside Blender
             "--",                       # Signals the end of Blender args and start of custom args
-            base_path + "data/" + stl_paths[i][2:],
+            base_path + stl_paths[i][2:],
             output_path(i, j),
             str(progress)
         ]

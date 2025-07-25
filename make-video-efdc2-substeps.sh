@@ -129,7 +129,7 @@ rm img/* &> /dev/null
 GIF=false
 MP4=true
 
-ffmpeg -y -loop 1 -f image2 -i ~/Documents/conferences/efdc2025/video_contest/EFDC2_Visions_of_Fluid_Dynamics_Template.png -c:v libx264 -t 10 -vf scale=1920:1080 img/title.mp4
+ffmpeg -y -loop 1 -f image2 -i EFDC2_Visions_of_Fluid_Dynamics_Template.png -c:v libx264 -t 10 -vf scale=1920:1080 img/title.mp4
 
 make_video isosurfaces_velocity_x isosurfaces_velocity_x
 
