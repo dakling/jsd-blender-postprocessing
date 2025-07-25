@@ -8,7 +8,7 @@ blender_executable = "/usr/bin/blender"
 
 base_path = "/home/klingenberg/Documents/conferences/efdc2025/video_contest/efdc2_video/"
 # Full path to your .blend file
-blend_file = base_path + "Empty1.blend"
+blend_file = base_path + "Empty.blend"
 
 # Path to the script that will run *inside* Blender
 render_script = base_path +  "blender_script.py"
