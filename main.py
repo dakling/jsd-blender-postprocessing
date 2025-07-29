@@ -1,13 +1,14 @@
 import subprocess
 import glob
 import os
+import pathlib
 
 # === CONFIGURATION ===
 
 # Full path to Blender executable
 blender_executable = "/usr/bin/blender"
 
-base_path = "/home/klingenberg/Documents/conferences/efdc2025/video_contest/efdc2_video/"
+base_path = str(pathlib.Path().resolve()) + "/"
 # Full path to your .blend file
 blend_file = base_path + "Empty.blend"
 
@@ -15,7 +16,9 @@ blend_file = base_path + "Empty.blend"
 render_script = base_path +  "blender_script.py"
 
 # STL file paths
-stl_paths = glob.glob("./data/plot_isosurfaces_velocity_x_t_*.stl")
+stl_1_paths = glob.glob("./data/plot_isosurfaces_velocity_iso04_x_t_*.stl")
+stl_2_paths = glob.glob("./data/plot_isosurfaces_velocity_iso05_x_t_*.stl")
+stl_3_paths = glob.glob("./data/plot_isosurfaces_velocity_iso06_x_t_*.stl")
 # stl_paths = glob.glob("./*000050.stl")
 
 # Output render image path
@@ -28,9 +31,10 @@ for newpath in newpaths:
 
 
 # === BUILD ARGUMENT LIST ===
-N = len(stl_paths)
-n_substeps = 3 # for smoother camera movement
+N = len(stl_1_paths)
+n_substeps = 1 # for smoother camera movement
 for i in range(1, N):
+# for i in [N-1, 1]:
     print("Doing image", i + 1, "out of", N)
     for j in range(n_substeps):
         print("substep", j + 1, "out of", n_substeps)
@@ -41,7 +45,9 @@ for i in range(1, N):
             "--background",             # Run in background (no UI)
             "--python", render_script, # Python script to run inside Blender
             "--",                       # Signals the end of Blender args and start of custom args
-            base_path + stl_paths[i][2:],
+            base_path + stl_1_paths[i][2:],
+            base_path + stl_2_paths[i][2:],
+            base_path + stl_3_paths[i][2:],
             output_path(i, j),
             str(progress)
         ]

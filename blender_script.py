@@ -6,11 +6,12 @@ import math
 # Blender adds its own args; we take everything after "--"
 argv = sys.argv
 argv = argv[argv.index("--") + 1:]
-stl_path,output_path, progress = argv
+output_path, progress = argv[-2:]
+stl_paths = argv[:-2]
 progress = float(progress)
 # Materials (must already exist in the .blend file)
-material_1_name = "Material.001"
-material_2_name = "Material.002"
+wall_material_name = "Material.002"
+material_names = ["Material.001" , "Material.005", "Material.003" ]
 
 # === STL OBJECT CONFIG ===
 scale = (1.0, 1.0, 1.0)
@@ -40,8 +41,10 @@ def import_and_prepare_stl(filepath, scale, location, rotation, material_name, o
     return obj
 
 # === IMPORT BOTH STL FILES ===
-obj = import_and_prepare_stl(stl_path, scale, location, rotation, material_1_name, object_name="STL_1")
-wall_obj = import_and_prepare_stl("/home/klingenberg/Documents/conferences/efdc2025/video_contest/efdc2_video/walls.stl", scale, location, rotation, material_2_name, object_name="STL_2")
+objs = []
+for i in range(len(stl_paths)):
+    objs.append(import_and_prepare_stl(stl_paths[i], scale, location, rotation, material_names[i], object_name="STL_" + str(i)))
+wall_obj = import_and_prepare_stl("/home/klingenberg/Documents/conferences/efdc2025/video_contest/efdc2_video/walls.stl", scale, location, rotation, wall_material_name, object_name="STL_2")
 
 # === CAMERA SETTINGS ===
 camera_location_0 = (5.0, -5.0, 3.0)
@@ -78,4 +81,3 @@ scene.render.filepath = output_path
 # === Perform rendering ===
 bpy.ops.render.render(write_still=True)
 print("✅ Render complete!")
-

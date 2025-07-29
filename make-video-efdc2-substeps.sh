@@ -2,7 +2,7 @@
 
 make_video_mp4(){
     # ffmpeg -y -f image2 -r 3 -pattern_type glob -i "plots/plot_$1_t_*.png" -vcodec libx264 -crf 22 -vf scale=1920:1080 "img/$2.mp4" &> /dev/null
-    ffmpeg -y -f image2 -r 10 -pattern_type glob -i "plots/plot_$1_t_*.png" -vcodec libx264 -crf 22 -vf scale=1920:1080 "img/$2.mp4" &> /dev/null
+    ffmpeg -y -f image2 -r 12 -pattern_type glob -i "plots/plot_$1_t_*.png" -vcodec libx264 -crf 22 -vf scale=1920:1080 "img/$2.mp4" &> /dev/null
 }
 
 combine_two_mp4(){
