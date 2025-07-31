@@ -12,13 +12,13 @@ start_time = time.time()
 
 # === CONFIGURATION ===
 # Full path to Blender executable
-blender_executable = r"C:\Program Files\Blender Foundation\Blender 3.4\blender.exe"
+blender_executable = r"Path\To\Your\Blender\Blender Foundation\Blender 3.4\blender.exe"
 # Full path to your .blend file
-blend_file = r"C:\Users\damom\Documents\1A_ZARM\ADaysWork\Blender_Pipe\Best_Blender\Empty.blend"
+blend_file = r"Path\To\Your\BlenderScript\Empty.blend"
 # Path to the script that will run *inside* Blender
-render_script = r"C:\Users\damom\Documents\1A_ZARM\ADaysWork\Blender_Pipe\Best_Blender\TwoStlBlend.py"
+render_script = r"Path\To\Your\PythonScript\TwoStlBlend.py"
 # Create the folder where to save
-folder_path = r"D:\Video_Future_Puffs\Pred_59\Vd_Blnd"
+folder_path = r"Path\To\Your\OutputFolder"
 os.makedirs(folder_path, exist_ok=True)
 
 # === CAMERA! ===
@@ -32,10 +32,10 @@ frmf= 1200;                # Final   frame to move the camera
 # === LOOP ON FILES =====
 for i in range(1,1251,100):
     folder_name = f"Step_{i:04d}"
-    stl_path_1 = fr"D:\Video_Future_Puffs\Pred_59\Vd\S\{folder_name}\FS.stl"
-    stl_path_2 = fr"D:\Video_Future_Puffs\Pred_59\Vd\S\{folder_name}\FQ.stl"
-    stl_path_3 = fr"D:\Video_Future_Puffs\Pred_59\Vd_6\S\{folder_name}\FS.stl"
-    stl_path_4 = fr"D:\Video_Future_Puffs\Pred_59\Vd_6\S\{folder_name}\FQ.stl"
+    stl_path_1 = fr"Path\To\Your\StlFile"
+    stl_path_2 = fr"Path\To\Your\StlFile"
+    stl_path_3 = fr"Path\To\Your\StlFile"
+    stl_path_4 = fr"Path\To\Your\StlFile"
     # Output render image path
     file_name=f"figure_{i:04d}.png"
     output_path = os.path.join(folder_path,file_name)
